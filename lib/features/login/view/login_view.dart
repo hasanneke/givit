@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:givit/features/login/controller/login_controller.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginViewState extends State<LoginView> with LoginViewMixin {
+class _LoginPageState extends State<LoginPage> with LoginViewMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

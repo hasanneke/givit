@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:givit/features/register/controller/register_controller.dart';
 
-class RegisterView extends StatefulWidget {
-  const RegisterView({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<RegisterView> createState() => _RegisterViewState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterViewState extends State<RegisterView> with RegisterViewMixin {
+class _RegisterPageState extends State<RegisterPage> with RegisterViewMixin {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

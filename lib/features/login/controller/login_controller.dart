@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:givit/features/login/view/login_view.dart';
 
-mixin LoginViewMixin on State<LoginView> {
+mixin LoginViewMixin on State<LoginPage> {
   late TextEditingController textEditingController;
   @override
   void initState() {
