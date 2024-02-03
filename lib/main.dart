@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:givit/features/home/view/home_page.dart';
 import 'package:givit/shared/theme/app_theme.dart';
 
 void main() {
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: AppTheme().lightTheme,
+      home: const HomePage(),
     );
   }
 }
