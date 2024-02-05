@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:givit/features/login/controller/login_controller.dart';
-import 'package:givit/features/login/view/widget/login_text_field.dart';
+import 'package:givit/features/login/view/widget/login_icon_view.dart';
+import 'package:givit/shared/widget/login_text_field.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,13 +17,7 @@ class _LoginPageState extends State<LoginPage> with LoginViewMixin {
         body: SingleChildScrollView(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 80, left: 50, bottom: 60),
-            child: Image.asset(
-              "assets/images/logo.png",
-              height: 100,
-            ),
-          ),
+          const LoginIconView(),
           const Padding(
             padding: EdgeInsets.all(10.0),
             child: LoginPageTextField(
@@ -45,43 +40,48 @@ class _LoginPageState extends State<LoginPage> with LoginViewMixin {
           Padding(
             padding: const EdgeInsets.only(left: 200),
             child: TextButton(
-                onPressed: () {}, child: Text("Forgot your password?")),
+                onPressed: () {}, child: const Text("Forgot your password?")),
           ),
           TextButton(
               onPressed: () {},
               child: Container(
                 height: 60,
                 width: 200,
-                child: Center(
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(30),
+                    ),
+                    color: Colors.green[100]),
+                child: const Center(
                     child: Text(
                   "LOGIN",
                   style: TextStyle(
                     fontSize: 20,
                   ),
                 )),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(30),
-                    ),
-                    color: Colors.green[100]),
               )),
+          const Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Text("-Sign in With-"),
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: Image.asset(
+              "assets/images/google.png",
+              height: 50,
+              width: 50,
+            ),
+          ),
+          const SizedBox(
+            height: 70,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Don't have an account?"),
-              TextButton(onPressed: () {}, child: Text("Sign Up"))
+              const Text("Don't have an account?"),
+              TextButton(onPressed: () {}, child: const Text("Sign Up"))
             ],
           ),
-          Text("-Or Sing in With-"),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FloatingActionButton(
-                onPressed: () {},
-                child: Image.asset(
-                  "assets/images/google.png",
-                  height: 40,
-                )),
-          )
         ],
       ),
     ));
