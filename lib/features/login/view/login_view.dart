@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:givit/features/login/controller/login_controller.dart';
+import 'package:givit/features/login/view/widget/forgot_password_view.dart';
+import 'package:givit/features/login/view/widget/login_button.dart';
+import 'package:givit/features/login/view/widget/login_form.dart';
 import 'package:givit/features/login/view/widget/login_icon_view.dart';
-import 'package:givit/shared/widget/login_text_field.dart';
+import 'package:givit/features/login/view/widget/sign_other_options.dart';
+import 'package:givit/features/login/view/widget/sign_up_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -18,70 +22,13 @@ class _LoginPageState extends State<LoginPage> with LoginViewMixin {
       child: Column(
         children: [
           const LoginIconView(),
-          const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: LoginPageTextField(
-              labeltext: 'Email',
-              prefixIcon: Icon(
-                Icons.mail,
-              ),
-            ),
+          const LoginForm(),
+          const ForgotPasswordButton(),
+          LoginButton(
+            onPressed: () {},
           ),
-          const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: LoginPageTextField(
-              labeltext: 'Password',
-              obsucuretext: true,
-              prefixIcon: Icon(
-                Icons.key,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 200),
-            child: TextButton(
-                onPressed: () {}, child: const Text("Forgot your password?")),
-          ),
-          TextButton(
-              onPressed: () {},
-              child: Container(
-                height: 60,
-                width: 200,
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(30),
-                    ),
-                    color: Colors.green[100]),
-                child: const Center(
-                    child: Text(
-                  "LOGIN",
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
-                )),
-              )),
-          const Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Text("-Sign in With-"),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Image.asset(
-              "assets/images/google.png",
-              height: 50,
-              width: 50,
-            ),
-          ),
-          const SizedBox(
-            height: 70,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Don't have an account?"),
-              TextButton(onPressed: () {}, child: const Text("Sign Up"))
-            ],
-          ),
+          const SignInWithOtherMethods(),
+          const SignUpButton(),
         ],
       ),
     ));

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:givit/features/home/view/home_page.dart';
+
 import 'package:givit/features/login/view/login_view.dart';
 import 'package:givit/shared/theme/app_theme.dart';
-import 'package:givit/features/profile/view/profile_view.dart';
 
 void main() {
   runApp(const MyApp());
