@@ -12,23 +12,17 @@ class LoginForm extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        Padding(
-          padding: EdgeInsets.all(10.0),
-          child: LoginPageTextField(
-            labeltext: 'Email',
-            prefixIcon: Icon(
-              Icons.mail,
-            ),
+        LoginPageTextField(
+          labeltext: 'Email',
+          prefixIcon: Icon(
+            Icons.mail,
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(10.0),
-          child: LoginPageTextField(
-            labeltext: 'Password',
-            obsucuretext: true,
-            prefixIcon: Icon(
-              Icons.key,
-            ),
+        LoginPageTextField(
+          labeltext: 'Password',
+          obsucuretext: true,
+          prefixIcon: Icon(
+            Icons.key,
           ),
         ),
         ForgotPasswordButton()

@@ -19,7 +19,10 @@ class LoginPageTextField extends StatelessWidget {
         labelText: labeltext,
         prefixIcon: prefixIcon,
         border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(30))),
+          borderRadius: BorderRadius.all(
+            Radius.circular(30),
+          ),
+        ),
       ),
     );
   }
