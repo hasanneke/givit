@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> with LoginViewMixin {
         children: [
           const LoginIconView(),
           const LoginForm(),
-          const ForgotPasswordButton(),
+
           LoginButton(
             onPressed: () {},
           ),

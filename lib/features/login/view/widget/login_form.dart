@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:givit/features/login/view/widget/forgot_password_view.dart';
 import 'package:givit/shared/widget/login_text_field.dart';
 
 class LoginForm extends StatelessWidget {
@@ -9,6 +10,7 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Padding(
           padding: EdgeInsets.all(10.0),
@@ -29,6 +31,7 @@ class LoginForm extends StatelessWidget {
             ),
           ),
         ),
+        ForgotPasswordButton()
       ],
     );
   }
