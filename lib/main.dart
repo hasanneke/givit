@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:givit/features/login/view/login_view.dart';
 import 'package:givit/shared/theme/app_theme.dart';
 

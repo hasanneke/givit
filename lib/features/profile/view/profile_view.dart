@@ -1,13 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
-import 'package:givit/features/profile/view/widgets/order_card.dart';
+import 'package:givit/features/profile/view/widgets/account_settings_drawer.dart';
 import 'package:givit/features/profile/view/widgets/profile_stat_card.dart';
 import 'package:givit/features/profile/view/widgets/listing_view.dart';
 import 'package:givit/features/profile/view/widgets/order_view.dart';
 
 class ProfileView extends StatefulWidget {
-  const ProfileView({super.key});
+  const ProfileView({Key? key}) : super(key: key);
 
   @override
   State<ProfileView> createState() => _ProfileViewState();
@@ -16,32 +14,37 @@ class ProfileView extends StatefulWidget {
 class _ProfileViewState extends State<ProfileView> {
   bool listOrders = true;
   bool listListings = false;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //BottomNavBar eklenemdi tasarımı belli değil.
+      key: _scaffoldKey,
       appBar: AppBar(
         actions: [
-          Icon(
-            size: 30,
-            Icons.manage_accounts,
-            color: Colors.black,
+          IconButton(
+            onPressed: () {
+              _scaffoldKey.currentState!.openEndDrawer();
+            },
+            icon: const Icon(
+              Icons.manage_accounts,
+              size: 30,
+            ),
           ),
         ],
-        automaticallyImplyLeading: false,
       ),
+      endDrawer: AccounSettingsDrawer(),
       body: Center(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: CircleAvatar(
                 radius: 50,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'User Name',
                 style: TextStyle(
@@ -50,11 +53,11 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text('Donation Rank: ####'),
             ),
-            Container(
+            SizedBox(
               height: 115,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -65,18 +68,18 @@ class _ProfileViewState extends State<ProfileView> {
                         listListings = true;
                       });
                     },
-                    child: ProfileStatCard(
+                    child: const ProfileStatCard(
                       title: 'Live Listings',
                       number: '20',
                       implication: 'Details →',
                     ),
                   ),
-                  ProfileStatCard(
+                  const ProfileStatCard(
                     title: 'Comments',
                     number: '35',
                     implication: '',
                   ),
-                  ProfileStatCard(
+                  const ProfileStatCard(
                     title: 'Likes',
                     number: '500',
                     implication: '',
@@ -84,8 +87,9 @@ class _ProfileViewState extends State<ProfileView> {
                 ],
               ),
             ),
-            if (!listListings) OrderView(),
-            if (listListings)
+            if (!listListings)
+              OrderView()
+            else
               ListingView(
                 onListChange: (value) {
                   setState(() {
