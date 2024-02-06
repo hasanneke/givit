@@ -1,9 +1,7 @@
 part of '../home_page.dart';
 
 class _ProductsListView extends StatelessWidget {
-  const _ProductsListView({
-    super.key,
-  });
+  const _ProductsListView();
 
   @override
   Widget build(BuildContext context) {
