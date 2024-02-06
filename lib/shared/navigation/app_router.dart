@@ -4,7 +4,7 @@ import 'package:givit/features/profile/view/profile_view.dart';
 import 'package:givit/features/register/view/register_view.dart';
 import 'package:go_router/go_router.dart';
 
-final appRouter = GoRouter(routes: [
+final appRouter = GoRouter(initialLocation: '/login', routes: [
   GoRoute(
     path: '/login',
     builder: (context, state) => LoginPage(),
