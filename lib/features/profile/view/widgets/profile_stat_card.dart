@@ -14,7 +14,7 @@ class ProfileStatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Container(
+      child: SizedBox(
         width: 100,
         child: Padding(
           padding: const EdgeInsets.all(8.0),

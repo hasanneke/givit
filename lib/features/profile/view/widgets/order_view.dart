@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-class OrderView extends StatefulWidget {
-  @override
-  _OrderViewState createState() => _OrderViewState();
-}
-
-class _OrderViewState extends State<OrderView> {
-  bool listOrders = true;
+class OrderView extends StatelessWidget {
+  const OrderView({super.key, required this.listOrders, required this.onMyOrdersTap, required this.onMyDontaitionsTap, required this.scrollController});
+  final bool listOrders;
+  final VoidCallback onMyOrdersTap;
+  final VoidCallback onMyDontaitionsTap;
+  final ScrollController scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -18,28 +17,16 @@ class _OrderViewState extends State<OrderView> {
             children: [
               TextButton(
                 style: ButtonStyle(
-                  foregroundColor: listOrders
-                      ? MaterialStateProperty.all(Colors.green[900])
-                      : MaterialStateProperty.all(Colors.grey),
+                  foregroundColor: listOrders ? MaterialStateProperty.all(Colors.green[900]) : MaterialStateProperty.all(Colors.grey),
                 ),
-                onPressed: () {
-                  setState(() {
-                    listOrders = true;
-                  });
-                },
+                onPressed: onMyOrdersTap,
                 child: const Text('My Orders'),
               ),
               TextButton(
                 style: ButtonStyle(
-                  foregroundColor: listOrders
-                      ? MaterialStateProperty.all(Colors.grey)
-                      : MaterialStateProperty.all(Colors.green[900]),
+                  foregroundColor: listOrders ? MaterialStateProperty.all(Colors.grey) : MaterialStateProperty.all(Colors.green[900]),
                 ),
-                onPressed: () {
-                  setState(() {
-                    listOrders = false;
-                  });
-                },
+                onPressed: onMyDontaitionsTap,
                 child: const Text('My Donations'),
               ),
             ],
@@ -47,14 +34,13 @@ class _OrderViewState extends State<OrderView> {
           Expanded(
             child: ListView.builder(
               itemCount: listOrders ? 15 : 15,
+              controller: scrollController,
+              padding: const EdgeInsets.all(0),
               itemBuilder: (context, index) {
                 return MyCard(
                   listOrders: listOrders,
-                  title: listOrders
-                      ? 'Order ${index + 1}'
-                      : 'Donation ${index + 1}',
-                  subtitle:
-                      listOrders ? 'Order Details' : '+### Donation Points',
+                  title: listOrders ? 'Order ${index + 1}' : 'Donation ${index + 1}',
+                  subtitle: listOrders ? 'Order Details' : '+### Donation Points',
                 );
               },
             ),
