@@ -14,7 +14,7 @@ class SignUpButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text("Don't have an account?"),
-          TextButton(onPressed: () {}, child: const Text("Sign Up"))
+          TextButton(onPressed: onPressed, child: const Text("Sign Up"))
         ],
       ),
     );
