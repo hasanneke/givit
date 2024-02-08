@@ -7,18 +7,18 @@ import 'package:go_router/go_router.dart';
 final appRouter = GoRouter(initialLocation: '/login', routes: [
   GoRoute(
     path: '/login',
-    builder: (context, state) => LoginPage(),
+    builder: (context, state) => const LoginPage(),
   ),
   GoRoute(
     path: '/register',
-    builder: (context, state) => RegisterPage(),
+    builder: (context, state) => const RegisterPage(),
   ),
   GoRoute(
     path: '/home',
-    builder: (context, state) => HomePage(),
+    builder: (context, state) => const HomePage(),
   ),
   GoRoute(
     path: '/profile',
-    builder: (context, state) => ProfileView(),
+    builder: (context, state) => const ProfileView(),
   ),
 ]);
