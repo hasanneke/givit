@@ -9,14 +9,9 @@ class LoginHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset(
-          "assets/images/logo.png",
-          height: 100,
-        ),
-        Text(title)
-      ],
+    return Image.asset(
+      "assets/images/logo.png",
+      height: 100,
     );
   }
 }

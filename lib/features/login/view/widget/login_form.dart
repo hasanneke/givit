@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:givit/features/login/view/widget/forgot_password_view.dart';
 import 'package:givit/shared/widget/login_text_field.dart';
 
@@ -18,6 +19,7 @@ class LoginForm extends StatelessWidget {
             Icons.mail,
           ),
         ),
+        Gap(12),
         LoginPageTextField(
           labeltext: 'Password',
           obsucuretext: true,

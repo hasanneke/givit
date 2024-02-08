@@ -8,15 +8,12 @@ class SignUpButton extends StatelessWidget {
   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 70),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text("Don't have an account?"),
-          TextButton(onPressed: onPressed, child: const Text("Sign Up"))
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("Don't have an account?"),
+        TextButton(onPressed: onPressed, child: const Text("Sign Up"))
+      ],
     );
   }
 }

@@ -24,7 +24,7 @@ class _RegisterPageState extends State<RegisterPage> with RegisterViewMixin {
               LoginHeader(
                 title: 'Create Account',
               ),
-              RegisterForm(),
+              const RegisterForm(),
               LoginButton(
                 onPressed: () {
                   GoRouter.of(context).go('/home');
