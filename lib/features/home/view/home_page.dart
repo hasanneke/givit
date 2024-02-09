@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [_CategoriesListView(), _ProductsListView()],
+          children: [],
         ),
       ),
     );
