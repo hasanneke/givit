@@ -5,11 +5,11 @@ part 'product_category.g.dart';
 
 @JsonSerializable()
 class ProductCategory {
-  final String? id;
-  final String? name;
+  final String id;
+  final String name;
   ProductCategory({
-    this.id,
-    this.name,
+    required this.id,
+    required this.name,
   });
 
   factory ProductCategory.fromJson(Map<String, dynamic> json) =>
