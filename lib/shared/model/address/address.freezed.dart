@@ -115,8 +115,8 @@ class __$$AddressImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$AddressImpl implements _Address {
-  _$AddressImpl({this.state, this.city, this.address});
+class _$AddressImpl extends _Address {
+  _$AddressImpl({this.state, this.city, this.address}) : super._();
 
   factory _$AddressImpl.fromJson(Map<String, dynamic> json) =>
       _$$AddressImplFromJson(json);
@@ -161,11 +161,12 @@ class _$AddressImpl implements _Address {
   }
 }
 
-abstract class _Address implements Address {
+abstract class _Address extends Address {
   factory _Address(
       {final String? state,
       final String? city,
       final String? address}) = _$AddressImpl;
+  _Address._() : super._();
 
   factory _Address.fromJson(Map<String, dynamic> json) = _$AddressImpl.fromJson;
 

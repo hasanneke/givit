@@ -14,4 +14,11 @@ class ProductCategory {
 
   factory ProductCategory.fromJson(Map<String, dynamic> json) =>
       _$ProductCategoryFromJson(json);
+  static List<ProductCategory> get dummy => [
+        ProductCategory(id: '1', name: 'Ayakabı'),
+        ProductCategory(id: '1', name: 'Kıyafet'),
+        ProductCategory(id: '1', name: 'Mutfak'),
+        ProductCategory(id: '1', name: 'Eşya'),
+        ProductCategory(id: '1', name: 'Çocuk'),
+      ];
 }

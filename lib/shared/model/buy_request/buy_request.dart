@@ -14,8 +14,43 @@ class BuyRequest with _$BuyRequest {
     required Product product,
     required String title,
     required String message,
+    @Default(RequestStatus.waiting) RequestStatus status,
   }) = _BuyRequest;
 
   factory BuyRequest.fromJson(Map<String, dynamic> json) =>
       _$BuyRequestFromJson(json);
+  static List<BuyRequest> get dummyList => [
+        BuyRequest(
+          profile: Profile.dummy,
+          product: Product.dummy.first,
+          title: 'Talep Başlığı',
+          message: 'Talep Açıklaması',
+        ),
+        BuyRequest(
+            profile: Profile.dummy,
+            product: Product.dummy.first,
+            title: 'Talep Başlığı',
+            message: 'Talep Açıklaması',
+            status: RequestStatus.accepted),
+        BuyRequest(
+          profile: Profile.dummy,
+          product: Product.dummy.first,
+          title: 'Talep Başlığı',
+          message: 'Talep Açıklaması',
+          status: RequestStatus.rejected,
+        )
+      ];
+  static BuyRequest get dummy => BuyRequest(
+        profile: Profile.dummy,
+        product: Product.dummy.first,
+        title: 'Talep Başlığı',
+        message: 'Talep Açıklaması',
+        status: RequestStatus.accepted,
+      );
+}
+
+enum RequestStatus {
+  waiting,
+  rejected,
+  accepted;
 }

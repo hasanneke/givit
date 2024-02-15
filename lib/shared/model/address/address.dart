@@ -5,6 +5,7 @@ part 'address.g.dart';
 
 @freezed
 class Address with _$Address {
+  const Address._();
   factory Address({
     String? state,
     String? city,
@@ -13,4 +14,6 @@ class Address with _$Address {
 
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);
+
+  String get description => '$city/$state\n$address';
 }

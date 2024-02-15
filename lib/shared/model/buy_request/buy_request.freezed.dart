@@ -24,6 +24,7 @@ mixin _$BuyRequest {
   Product get product => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
+  RequestStatus get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,12 @@ abstract class $BuyRequestCopyWith<$Res> {
           BuyRequest value, $Res Function(BuyRequest) then) =
       _$BuyRequestCopyWithImpl<$Res, BuyRequest>;
   @useResult
-  $Res call({Profile profile, Product product, String title, String message});
+  $Res call(
+      {Profile profile,
+      Product product,
+      String title,
+      String message,
+      RequestStatus status});
 
   $ProfileCopyWith<$Res> get profile;
   $ProductCopyWith<$Res> get product;
@@ -60,6 +66,7 @@ class _$BuyRequestCopyWithImpl<$Res, $Val extends BuyRequest>
     Object? product = null,
     Object? title = null,
     Object? message = null,
+    Object? status = null,
   }) {
     return _then(_value.copyWith(
       profile: null == profile
@@ -78,6 +85,10 @@ class _$BuyRequestCopyWithImpl<$Res, $Val extends BuyRequest>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as RequestStatus,
     ) as $Val);
   }
 
@@ -106,7 +117,12 @@ abstract class _$$BuyRequestImplCopyWith<$Res>
       __$$BuyRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Profile profile, Product product, String title, String message});
+  $Res call(
+      {Profile profile,
+      Product product,
+      String title,
+      String message,
+      RequestStatus status});
 
   @override
   $ProfileCopyWith<$Res> get profile;
@@ -129,6 +145,7 @@ class __$$BuyRequestImplCopyWithImpl<$Res>
     Object? product = null,
     Object? title = null,
     Object? message = null,
+    Object? status = null,
   }) {
     return _then(_$BuyRequestImpl(
       profile: null == profile
@@ -147,6 +164,10 @@ class __$$BuyRequestImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as RequestStatus,
     ));
   }
 }
@@ -158,7 +179,8 @@ class _$BuyRequestImpl implements _BuyRequest {
       {required this.profile,
       required this.product,
       required this.title,
-      required this.message});
+      required this.message,
+      this.status = RequestStatus.waiting});
 
   factory _$BuyRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$BuyRequestImplFromJson(json);
@@ -171,10 +193,13 @@ class _$BuyRequestImpl implements _BuyRequest {
   final String title;
   @override
   final String message;
+  @override
+  @JsonKey()
+  final RequestStatus status;
 
   @override
   String toString() {
-    return 'BuyRequest(profile: $profile, product: $product, title: $title, message: $message)';
+    return 'BuyRequest(profile: $profile, product: $product, title: $title, message: $message, status: $status)';
   }
 
   @override
@@ -185,13 +210,14 @@ class _$BuyRequestImpl implements _BuyRequest {
             (identical(other.profile, profile) || other.profile == profile) &&
             (identical(other.product, product) || other.product == product) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, profile, product, title, message);
+      Object.hash(runtimeType, profile, product, title, message, status);
 
   @JsonKey(ignore: true)
   @override
@@ -212,7 +238,8 @@ abstract class _BuyRequest implements BuyRequest {
       {required final Profile profile,
       required final Product product,
       required final String title,
-      required final String message}) = _$BuyRequestImpl;
+      required final String message,
+      final RequestStatus status}) = _$BuyRequestImpl;
 
   factory _BuyRequest.fromJson(Map<String, dynamic> json) =
       _$BuyRequestImpl.fromJson;
@@ -225,6 +252,8 @@ abstract class _BuyRequest implements BuyRequest {
   String get title;
   @override
   String get message;
+  @override
+  RequestStatus get status;
   @override
   @JsonKey(ignore: true)
   _$$BuyRequestImplCopyWith<_$BuyRequestImpl> get copyWith =>

@@ -12,6 +12,7 @@ _$ProfileImpl _$$ProfileImplFromJson(Map<String, dynamic> json) =>
       surname: json['surname'] as String,
       email: json['email'] as String,
       phone: json['phone'] as String,
+      point: (json['point'] as num?)?.toDouble() ?? 0,
       address: json['address'] == null
           ? null
           : Address.fromJson(json['address'] as Map<String, dynamic>),
@@ -23,5 +24,6 @@ Map<String, dynamic> _$$ProfileImplToJson(_$ProfileImpl instance) =>
       'surname': instance.surname,
       'email': instance.email,
       'phone': instance.phone,
+      'point': instance.point,
       'address': instance.address,
     };
