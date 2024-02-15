@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:givit/shared/model/address.dart';
-import 'package:givit/shared/model/product.dart';
+
+import 'package:givit/shared/model/address/address.dart';
 
 part 'profile.freezed.dart';
 part 'profile.g.dart';

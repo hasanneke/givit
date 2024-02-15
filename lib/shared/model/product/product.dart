@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:givit/shared/model/product_category.dart';
-import 'package:givit/shared/model/profile.dart';
+
+import 'package:givit/shared/model/product_category/product_category.dart';
+import 'package:givit/shared/model/profile/profile.dart';
 
 part 'product.freezed.dart';
 part 'product.g.dart';

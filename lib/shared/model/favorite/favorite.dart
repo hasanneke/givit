@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:givit/shared/model/product.dart';
+import 'package:givit/shared/model/product/product.dart';
 
 part 'favorite.freezed.dart';
 part 'favorite.g.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:givit/shared/model/profile.dart';
+import 'package:givit/shared/model/profile/profile.dart';
 
 class ProfileIcon extends StatelessWidget {
   const ProfileIcon({super.key, required this.profile});
