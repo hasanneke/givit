@@ -7,6 +7,7 @@ part 'profile.g.dart';
 
 @freezed
 class Profile with _$Profile {
+  const Profile._();
   factory Profile({
     required String name,
     required String surname,
@@ -30,4 +31,5 @@ class Profile with _$Profile {
           state: 'Yenimahalle',
         ),
       );
+  String get fullName => '$name $surname';
 }

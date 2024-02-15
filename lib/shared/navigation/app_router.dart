@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:givit/features/home/view/home_page.dart';
 import 'package:givit/features/login/view/login_view.dart';
+import 'package:givit/features/product_detail/product_detail_page.dart';
 import 'package:givit/features/profile/profile_page.dart';
 import 'package:givit/features/profile/view/profile_view.dart';
 import 'package:givit/features/register/view/register_view.dart';
@@ -10,7 +11,7 @@ import 'package:givit/shared/navigation/bottom_navigator/scaffold_with_navigatio
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/login',
+  initialLocation: '/home',
   routes: [
     GoRoute(
       path: '/login',
@@ -36,6 +37,10 @@ final appRouter = GoRouter(
         GoRoute(
           path: '/profile',
           builder: (context, state) => const ProfilePage(),
+        ),
+        GoRoute(
+          path: '/product-detail',
+          builder: (context, state) => const ProductDetailPage(),
         ),
       ],
     ),

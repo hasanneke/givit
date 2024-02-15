@@ -177,14 +177,15 @@ class __$$ProfileImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ProfileImpl implements _Profile {
+class _$ProfileImpl extends _Profile {
   _$ProfileImpl(
       {required this.name,
       required this.surname,
       required this.email,
       required this.phone,
       this.point = 0,
-      this.address});
+      this.address})
+      : super._();
 
   factory _$ProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileImplFromJson(json);
@@ -240,7 +241,7 @@ class _$ProfileImpl implements _Profile {
   }
 }
 
-abstract class _Profile implements Profile {
+abstract class _Profile extends Profile {
   factory _Profile(
       {required final String name,
       required final String surname,
@@ -248,6 +249,7 @@ abstract class _Profile implements Profile {
       required final String phone,
       final double point,
       final Address? address}) = _$ProfileImpl;
+  _Profile._() : super._();
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$ProfileImpl.fromJson;
 

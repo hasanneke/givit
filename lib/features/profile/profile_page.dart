@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:givit/features/home/view/home_page.dart';
-import 'package:givit/shared/model/address/address.dart';
+
 import 'package:givit/shared/model/buy_request/buy_request.dart';
 import 'package:givit/shared/model/product/product.dart';
 import 'package:givit/shared/model/profile/profile.dart';
