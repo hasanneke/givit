@@ -13,7 +13,7 @@ enum Collection {
   productRequests,
   comments;
 
-  CollectionReference collection() {
+  CollectionReference collection<T>() {
     switch (this) {
       case Collection.products:
         return FirebaseFirestore.instance

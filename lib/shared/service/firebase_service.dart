@@ -7,7 +7,7 @@ abstract class FirebaseService<T> {
     required this.reference,
   });
 
-  Future<List<T>> fetch(List<Query> queries) async {
+  Future<List<T>> fetch() async {
     return await reference
         .get()
         .then((value) => value.docs.map((e) => e.data()).toList());
