@@ -11,9 +11,9 @@ import 'package:givit/shared/service/request/fb_buy_request_service.dart';
 
 abstract class ProfileService {
   Future<Profile?> getUser(String id);
-  Future<List<Product>> fetchUsersProducts();
-  Future<List<BuyRequest>> fetchUsersRequests();
-  Future<List<ProductMark>> fetchMarkedProducts();
+  Future<List<Product>> fetchUsersProducts(String userId);
+  Future<List<BuyRequest>> fetchUsersRequests(String userId);
+  Future<List<ProductMark>> fetchMarkedProducts(String userId);
 }
 
 class FBProfilePageService extends ProfileService {
@@ -29,18 +29,42 @@ class FBProfilePageService extends ProfileService {
   }
 
   @override
-  Future<List<ProductMark>> fetchMarkedProducts() async {
-    return markedProductService.fetch();
+  Future<List<ProductMark>> fetchMarkedProducts(String userId) async {
+    return markedProductService.fetch(
+      filters: [
+        FirebaseFilter(
+          field: 'user_id',
+          filter: FireFilter.isEqualTo,
+          value: userId,
+        )
+      ],
+    );
   }
 
   @override
-  Future<List<Product>> fetchUsersProducts() async {
-    return await productService.fetch();
+  Future<List<Product>> fetchUsersProducts(String userId) async {
+    return await productService.fetch(
+      filters: [
+        FirebaseFilter(
+          field: 'profile.id',
+          filter: FireFilter.isEqualTo,
+          value: userId,
+        )
+      ],
+    );
   }
 
   @override
-  Future<List<BuyRequest>> fetchUsersRequests() async {
-    return await requetsService.fetch();
+  Future<List<BuyRequest>> fetchUsersRequests(String userId) async {
+    return await requetsService.fetch(
+      filters: [
+        FirebaseFilter(
+          field: 'profile.id',
+          filter: FireFilter.isEqualTo,
+          value: userId,
+        )
+      ],
+    );
   }
 
   @override

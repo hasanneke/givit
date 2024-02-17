@@ -16,16 +16,17 @@ part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileService profileService;
+  final String userId;
   ProfileBloc(
     this.profileService,
+    this.userId,
   ) : super(const _Initial()) {
     on<ProfileEvent>((event, emit) async {
       await event.when(started: (userId) async {
         final profile = await profileService.getUser(userId);
-        final savedProducts = await profileService.fetchMarkedProducts();
-        final products = await profileService.fetchUsersProducts();
-        final buyRequests = await profileService.fetchUsersRequests();
-
+        final savedProducts = await profileService.fetchMarkedProducts(userId);
+        final products = await profileService.fetchUsersProducts(userId);
+        final buyRequests = await profileService.fetchUsersRequests(userId);
         emit(
           ProfileState.loaded(
             profile: profile,

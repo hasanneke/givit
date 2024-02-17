@@ -19,8 +19,10 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProfileBloc(FBProfilePageService())
-        ..add(
+      create: (context) => ProfileBloc(
+        FBProfilePageService(),
+        FirebaseAuth.instance.currentUser!.uid,
+      )..add(
           ProfileEvent.started(
             userId: FirebaseAuth.instance.currentUser?.uid ?? '',
           ),
