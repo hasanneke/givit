@@ -13,7 +13,8 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(
+    Future.delayed(
+      const Duration(milliseconds: 500),
       () => checkUser(),
     );
   }
