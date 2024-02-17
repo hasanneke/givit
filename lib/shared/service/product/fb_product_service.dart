@@ -6,6 +6,7 @@ import 'package:givit/shared/service/firebase_service.dart';
 class FBProductService extends FirebaseService<Product> {
   FBProductService()
       : super(
-            reference: Collection.products.collection()
-                as CollectionReference<Product>);
+          reference:
+              Collection.products.collection() as CollectionReference<Product>,
+        );
 }

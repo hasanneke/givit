@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:givit/features/profile/service/profile_service.dart';
 import 'package:givit/shared/model/buy_request/buy_request.dart';
+import 'package:givit/shared/model/mark/product_mark.dart';
 import 'package:givit/shared/model/product/product.dart';
 
 import 'package:givit/shared/model/profile/profile.dart';
@@ -20,13 +21,19 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) : super(const _Initial()) {
     on<ProfileEvent>((event, emit) async {
       await event.when(started: (userId) async {
-        final res = await profileService.getUser(userId);
-        emit(ProfileState.loaded(
-          profile: res!,
-          buyRequests: [],
-          products: [],
-          savedProducts: [],
-        ));
+        final profile = await profileService.getUser(userId);
+        final savedProducts = await profileService.fetchMarkedProducts();
+        final products = await profileService.fetchUsersProducts();
+        final buyRequests = await profileService.fetchUsersRequests();
+
+        emit(
+          ProfileState.loaded(
+            profile: profile,
+            products: products,
+            savedProducts: savedProducts,
+            buyRequests: buyRequests,
+          ),
+        );
       });
     });
   }

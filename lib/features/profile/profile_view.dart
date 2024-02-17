@@ -37,13 +37,13 @@ class _ProfileView extends StatelessWidget {
                   Expanded(
                     child: TabBarView(children: [
                       GridListView(
-                        products: Product.dummy,
+                        products: products,
                       ),
                       BuyRequestsListView(
-                        buyRequests: BuyRequest.dummyList,
+                        buyRequests: buyRequests,
                       ),
                       GridListView(
-                        products: Product.dummy,
+                        products: savedProducts.map((e) => e.product).toList(),
                       ),
                     ]),
                   ),
@@ -62,7 +62,7 @@ class _ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
     super.key,
     required this.profile,
   });
-  final Profile profile;
+  final Profile? profile;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -70,7 +70,7 @@ class _ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
         padding: const EdgeInsets.all(8.0),
         child: CircleAvatar(
           child: Image.network(
-            profile.avatarUrl ?? '',
+            profile?.avatarUrl ?? '',
             errorBuilder: (context, error, stackTrace) => const Placeholder(),
           ),
         ),
@@ -79,7 +79,7 @@ class _ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           const Gap(8),
           Text(
-            '${profile.point} puan',
+            '${profile?.point ?? 0} puan',
           ),
           const Icon(
             Icons.star,

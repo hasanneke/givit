@@ -7,7 +7,11 @@ abstract class FirebaseService<T> {
     required this.reference,
   });
 
-  Future<List<T>> fetch() async {
+  Future<List<T>> fetch({List<FirebaseFilter> filters = const []}) async {
+    if (filters.isNotEmpty) {
+      var query = reference;
+      for (var filter in filters) {}
+    }
     return await reference
         .get()
         .then((value) => value.docs.map((e) => e.data()).toList());
@@ -29,4 +33,27 @@ abstract class FirebaseService<T> {
   Future<T?> get(String id) async {
     return await reference.doc(id).get().then((value) => value.data());
   }
+}
+
+class FirebaseFilter {
+  final String field;
+  final FireFilter filter;
+  FirebaseFilter({
+    required this.field,
+    required this.filter,
+  });
+}
+
+enum FireFilter {
+  isEqualTo,
+  isNotEqualTo,
+  isLessThan,
+  isLessThanOrEqualTo,
+  isGreaterThan,
+  isGreaterThanOrEqualTo,
+  arrayContains,
+  arrayContainsAny,
+  whereIn,
+  whereNotIn,
+  isNull;
 }

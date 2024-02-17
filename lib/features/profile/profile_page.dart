@@ -6,9 +6,9 @@ import 'package:givit/features/profile/bloc/profile_bloc.dart';
 import 'package:givit/features/profile/service/profile_service.dart';
 
 import 'package:givit/shared/model/buy_request/buy_request.dart';
+import 'package:givit/shared/model/mark/product_mark.dart';
 import 'package:givit/shared/model/product/product.dart';
 import 'package:givit/shared/model/profile/profile.dart';
-import 'package:givit/shared/service/profile/fb_profile_service.dart';
 import 'package:givit/shared/widget/product_item_view.dart';
 part 'widget/profile_info.dart';
 part 'profile_view.dart';

@@ -224,24 +224,24 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Profile profile, List<Product> products,
-            List<Product> savedProducts, List<BuyRequest> buyRequests)
+    required TResult Function(Profile? profile, List<Product> products,
+            List<ProductMark> savedProducts, List<BuyRequest> buyRequests)
         loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Profile profile, List<Product> products,
-            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+    TResult? Function(Profile? profile, List<Product> products,
+            List<ProductMark> savedProducts, List<BuyRequest> buyRequests)?
         loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Profile profile, List<Product> products,
-            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+    TResult Function(Profile? profile, List<Product> products,
+            List<ProductMark> savedProducts, List<BuyRequest> buyRequests)?
         loaded,
     required TResult orElse(),
   }) =>
@@ -324,8 +324,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Profile profile, List<Product> products,
-            List<Product> savedProducts, List<BuyRequest> buyRequests)
+    required TResult Function(Profile? profile, List<Product> products,
+            List<ProductMark> savedProducts, List<BuyRequest> buyRequests)
         loaded,
   }) {
     return initial();
@@ -335,8 +335,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Profile profile, List<Product> products,
-            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+    TResult? Function(Profile? profile, List<Product> products,
+            List<ProductMark> savedProducts, List<BuyRequest> buyRequests)?
         loaded,
   }) {
     return initial?.call();
@@ -346,8 +346,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Profile profile, List<Product> products,
-            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+    TResult Function(Profile? profile, List<Product> products,
+            List<ProductMark> savedProducts, List<BuyRequest> buyRequests)?
         loaded,
     required TResult orElse(),
   }) {
@@ -400,12 +400,12 @@ abstract class _$$LoadedImplCopyWith<$Res> {
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {Profile profile,
+      {Profile? profile,
       List<Product> products,
-      List<Product> savedProducts,
+      List<ProductMark> savedProducts,
       List<BuyRequest> buyRequests});
 
-  $ProfileCopyWith<$Res> get profile;
+  $ProfileCopyWith<$Res>? get profile;
 }
 
 /// @nodoc
@@ -419,16 +419,16 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? profile = null,
+    Object? profile = freezed,
     Object? products = null,
     Object? savedProducts = null,
     Object? buyRequests = null,
   }) {
     return _then(_$LoadedImpl(
-      profile: null == profile
+      profile: freezed == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
-              as Profile,
+              as Profile?,
       products: null == products
           ? _value._products
           : products // ignore: cast_nullable_to_non_nullable
@@ -436,7 +436,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
       savedProducts: null == savedProducts
           ? _value._savedProducts
           : savedProducts // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
+              as List<ProductMark>,
       buyRequests: null == buyRequests
           ? _value._buyRequests
           : buyRequests // ignore: cast_nullable_to_non_nullable
@@ -446,8 +446,12 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ProfileCopyWith<$Res> get profile {
-    return $ProfileCopyWith<$Res>(_value.profile, (value) {
+  $ProfileCopyWith<$Res>? get profile {
+    if (_value.profile == null) {
+      return null;
+    }
+
+    return $ProfileCopyWith<$Res>(_value.profile!, (value) {
       return _then(_value.copyWith(profile: value));
     });
   }
@@ -459,14 +463,14 @@ class _$LoadedImpl implements _Loaded {
   const _$LoadedImpl(
       {required this.profile,
       required final List<Product> products,
-      required final List<Product> savedProducts,
+      required final List<ProductMark> savedProducts,
       required final List<BuyRequest> buyRequests})
       : _products = products,
         _savedProducts = savedProducts,
         _buyRequests = buyRequests;
 
   @override
-  final Profile profile;
+  final Profile? profile;
   final List<Product> _products;
   @override
   List<Product> get products {
@@ -475,9 +479,9 @@ class _$LoadedImpl implements _Loaded {
     return EqualUnmodifiableListView(_products);
   }
 
-  final List<Product> _savedProducts;
+  final List<ProductMark> _savedProducts;
   @override
-  List<Product> get savedProducts {
+  List<ProductMark> get savedProducts {
     if (_savedProducts is EqualUnmodifiableListView) return _savedProducts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_savedProducts);
@@ -527,8 +531,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Profile profile, List<Product> products,
-            List<Product> savedProducts, List<BuyRequest> buyRequests)
+    required TResult Function(Profile? profile, List<Product> products,
+            List<ProductMark> savedProducts, List<BuyRequest> buyRequests)
         loaded,
   }) {
     return loaded(profile, products, savedProducts, buyRequests);
@@ -538,8 +542,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Profile profile, List<Product> products,
-            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+    TResult? Function(Profile? profile, List<Product> products,
+            List<ProductMark> savedProducts, List<BuyRequest> buyRequests)?
         loaded,
   }) {
     return loaded?.call(profile, products, savedProducts, buyRequests);
@@ -549,8 +553,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Profile profile, List<Product> products,
-            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+    TResult Function(Profile? profile, List<Product> products,
+            List<ProductMark> savedProducts, List<BuyRequest> buyRequests)?
         loaded,
     required TResult orElse(),
   }) {
@@ -594,14 +598,14 @@ class _$LoadedImpl implements _Loaded {
 
 abstract class _Loaded implements ProfileState {
   const factory _Loaded(
-      {required final Profile profile,
+      {required final Profile? profile,
       required final List<Product> products,
-      required final List<Product> savedProducts,
+      required final List<ProductMark> savedProducts,
       required final List<BuyRequest> buyRequests}) = _$LoadedImpl;
 
-  Profile get profile;
+  Profile? get profile;
   List<Product> get products;
-  List<Product> get savedProducts;
+  List<ProductMark> get savedProducts;
   List<BuyRequest> get buyRequests;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>

@@ -6,7 +6,7 @@ class ProfileInfo extends StatelessWidget {
     required this.profile,
   });
 
-  final Profile profile;
+  final Profile? profile;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +22,13 @@ class ProfileInfo extends StatelessWidget {
               Row(
                 children: [
                   const Icon(Icons.person_outline_outlined),
-                  Text('${profile.name} ${profile.surname}'),
+                  Text('${profile?.name} ${profile?.surname}'),
                 ],
               ),
               Row(
                 children: [
                   const Icon(Icons.location_on_outlined),
-                  Text(profile.address?.description ?? ''),
+                  Text(profile?.address?.description ?? ''),
                 ],
               )
             ],
@@ -38,7 +38,7 @@ class ProfileInfo extends StatelessWidget {
               const Icon(
                 Icons.phone_outlined,
               ),
-              Text(profile.phone)
+              Text(profile?.phone ?? '??')
             ],
           ),
         ],
