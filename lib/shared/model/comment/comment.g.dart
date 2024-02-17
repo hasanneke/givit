@@ -11,7 +11,7 @@ _$CommentImpl _$$CommentImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String? ?? '',
       commenter: Profile.fromJson(json['commenter'] as Map<String, dynamic>),
       text: json['text'] as String,
-      hashTag: json['hashTag'] as String?,
+      hashTag: json['hash_tag'] as String?,
     );
 
 Map<String, dynamic> _$$CommentImplToJson(_$CommentImpl instance) =>
@@ -19,5 +19,5 @@ Map<String, dynamic> _$$CommentImplToJson(_$CommentImpl instance) =>
       'id': instance.id,
       'commenter': instance.commenter,
       'text': instance.text,
-      'hashTag': instance.hashTag,
+      'hash_tag': instance.hashTag,
     };

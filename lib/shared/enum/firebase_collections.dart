@@ -9,7 +9,7 @@ import 'package:givit/shared/model/profile/profile.dart';
 enum Collection {
   products,
   categories,
-  profile,
+  profiles,
   productRequests,
   comments;
 
@@ -33,7 +33,7 @@ enum Collection {
                       .copyWith(id: snapshot.id),
               toFirestore: (value, options) => value.toJson(),
             );
-      case Collection.profile:
+      case Collection.profiles:
         return FirebaseFirestore.instance
             .collection(name)
             .withConverter<Profile>(

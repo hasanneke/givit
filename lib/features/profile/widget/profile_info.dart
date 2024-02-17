@@ -16,33 +16,6 @@ class ProfileInfo extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Row(
-                children: [
-                  CircleAvatar(
-                    child: FlutterLogo(),
-                  ),
-                  Gap(8),
-                  Text(
-                    '1222 puan',
-                  ),
-                  Icon(
-                    Icons.star,
-                    color: Colors.orange,
-                  ),
-                ],
-              ),
-              IconButton.filledTonal(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.edit_outlined,
-                ),
-              )
-            ],
-          ),
-          const Gap(12),
-          Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

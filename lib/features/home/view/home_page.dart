@@ -25,7 +25,9 @@ class _HomePageState extends State<HomePage> {
     return BlocProvider(
       create: (context) => HomeBloc(
         homeService: FBHomeService(),
-      )..add(const HomeEvent.started()),
+      )..add(
+          const HomeEvent.started(),
+        ),
       child: const _HomeView(),
     );
   }

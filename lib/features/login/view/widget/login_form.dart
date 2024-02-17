@@ -6,14 +6,18 @@ import 'package:givit/shared/widget/login_text_field.dart';
 class LoginForm extends StatelessWidget {
   const LoginForm({
     super.key,
+    required this.emailController,
+    required this.passwordController,
   });
-
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         LoginPageTextField(
+          textEditingController: emailController,
           labeltext: 'Email',
           prefixIcon: Icon(
             Icons.mail,
@@ -21,6 +25,7 @@ class LoginForm extends StatelessWidget {
         ),
         Gap(12),
         LoginPageTextField(
+          textEditingController: passwordController,
           labeltext: 'Password',
           obsucuretext: true,
           prefixIcon: Icon(

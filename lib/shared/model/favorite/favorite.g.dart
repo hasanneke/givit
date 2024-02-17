@@ -8,12 +8,12 @@ part of 'favorite.dart';
 
 _$FavoriteImpl _$$FavoriteImplFromJson(Map<String, dynamic> json) =>
     _$FavoriteImpl(
-      userId: json['userId'] as String,
+      userId: json['user_id'] as String,
       product: Product.fromJson(json['product'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$FavoriteImplToJson(_$FavoriteImpl instance) =>
     <String, dynamic>{
-      'userId': instance.userId,
+      'user_id': instance.userId,
       'product': instance.product,
     };

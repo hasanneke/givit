@@ -25,4 +25,8 @@ abstract class FirebaseService<T> {
   Future<void> delete(String id) async {
     await reference.doc(id).delete();
   }
+
+  Future<T?> get(String id) async {
+    return await reference.doc(id).get().then((value) => value.data());
+  }
 }

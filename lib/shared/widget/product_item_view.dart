@@ -26,16 +26,20 @@ class ProductItemView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: Image.network(
-                      product.imageUrl,
-                    ).image,
-                  ),
-                ),
-              ),
+              child: product.imageUrl.isEmpty
+                  ? const Placeholder()
+                  : Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: Image.network(
+                            product.imageUrl,
+                            errorBuilder: (context, error, stackTrace) =>
+                                const Placeholder(),
+                          ).image,
+                        ),
+                      ),
+                    ),
             ),
             Text(
               product.title,
