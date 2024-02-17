@@ -8,6 +8,7 @@ part of 'buy_request.dart';
 
 _$BuyRequestImpl _$$BuyRequestImplFromJson(Map<String, dynamic> json) =>
     _$BuyRequestImpl(
+      id: json['id'] as String? ?? '',
       profile: Profile.fromJson(json['profile'] as Map<String, dynamic>),
       product: Product.fromJson(json['product'] as Map<String, dynamic>),
       title: json['title'] as String,
@@ -18,6 +19,7 @@ _$BuyRequestImpl _$$BuyRequestImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$BuyRequestImplToJson(_$BuyRequestImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'profile': instance.profile,
       'product': instance.product,
       'title': instance.title,

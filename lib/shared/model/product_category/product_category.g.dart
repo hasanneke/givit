@@ -6,13 +6,15 @@ part of 'product_category.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductCategory _$ProductCategoryFromJson(Map<String, dynamic> json) =>
-    ProductCategory(
+_$ProductCategoryImpl _$$ProductCategoryImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ProductCategoryImpl(
       id: json['id'] as String,
       name: json['name'] as String,
     );
 
-Map<String, dynamic> _$ProductCategoryToJson(ProductCategory instance) =>
+Map<String, dynamic> _$$ProductCategoryImplToJson(
+        _$ProductCategoryImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

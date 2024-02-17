@@ -10,6 +10,7 @@ part 'buy_request.g.dart';
 @freezed
 class BuyRequest with _$BuyRequest {
   factory BuyRequest({
+    @Default('') String id,
     required Profile profile,
     required Product product,
     required String title,

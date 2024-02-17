@@ -9,6 +9,7 @@ part 'profile.g.dart';
 class Profile with _$Profile {
   const Profile._();
   factory Profile({
+    @Default('') String id,
     required String name,
     required String surname,
     required String email,

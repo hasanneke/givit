@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:givit/shared/widget/login_button.dart';
 import 'package:givit/features/register/controller/register_controller.dart';
 import 'package:givit/features/register/view/widget/register_form.dart';
@@ -16,6 +17,9 @@ class _RegisterPageState extends State<RegisterPage> with RegisterViewMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Kayıt Ol'),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -24,7 +28,9 @@ class _RegisterPageState extends State<RegisterPage> with RegisterViewMixin {
               LoginHeader(
                 title: 'Create Account',
               ),
+              const Gap(12),
               const RegisterForm(),
+              const Gap(12),
               LoginButton(
                 onPressed: () {
                   GoRouter.of(context).go('/home');

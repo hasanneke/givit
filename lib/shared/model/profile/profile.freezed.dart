@@ -20,6 +20,7 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Profile {
+  String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get surname => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -38,7 +39,8 @@ abstract class $ProfileCopyWith<$Res> {
       _$ProfileCopyWithImpl<$Res, Profile>;
   @useResult
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String surname,
       String email,
       String phone,
@@ -61,6 +63,7 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? surname = null,
     Object? email = null,
@@ -69,6 +72,10 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
     Object? address = freezed,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -117,7 +124,8 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String name,
+      {String id,
+      String name,
       String surname,
       String email,
       String phone,
@@ -139,6 +147,7 @@ class __$$ProfileImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
     Object? surname = null,
     Object? email = null,
@@ -147,6 +156,10 @@ class __$$ProfileImplCopyWithImpl<$Res>
     Object? address = freezed,
   }) {
     return _then(_$ProfileImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -179,7 +192,8 @@ class __$$ProfileImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProfileImpl extends _Profile {
   _$ProfileImpl(
-      {required this.name,
+      {this.id = '',
+      required this.name,
       required this.surname,
       required this.email,
       required this.phone,
@@ -190,6 +204,9 @@ class _$ProfileImpl extends _Profile {
   factory _$ProfileImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProfileImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final String id;
   @override
   final String name;
   @override
@@ -206,7 +223,7 @@ class _$ProfileImpl extends _Profile {
 
   @override
   String toString() {
-    return 'Profile(name: $name, surname: $surname, email: $email, phone: $phone, point: $point, address: $address)';
+    return 'Profile(id: $id, name: $name, surname: $surname, email: $email, phone: $phone, point: $point, address: $address)';
   }
 
   @override
@@ -214,6 +231,7 @@ class _$ProfileImpl extends _Profile {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.surname, surname) || other.surname == surname) &&
             (identical(other.email, email) || other.email == email) &&
@@ -225,7 +243,7 @@ class _$ProfileImpl extends _Profile {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, name, surname, email, phone, point, address);
+      Object.hash(runtimeType, id, name, surname, email, phone, point, address);
 
   @JsonKey(ignore: true)
   @override
@@ -243,7 +261,8 @@ class _$ProfileImpl extends _Profile {
 
 abstract class _Profile extends Profile {
   factory _Profile(
-      {required final String name,
+      {final String id,
+      required final String name,
       required final String surname,
       required final String email,
       required final String phone,
@@ -253,6 +272,8 @@ abstract class _Profile extends Profile {
 
   factory _Profile.fromJson(Map<String, dynamic> json) = _$ProfileImpl.fromJson;
 
+  @override
+  String get id;
   @override
   String get name;
   @override
