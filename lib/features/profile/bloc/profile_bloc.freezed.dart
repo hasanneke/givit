@@ -224,19 +224,25 @@ mixin _$ProfileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Profile profile) loaded,
+    required TResult Function(Profile profile, List<Product> products,
+            List<Product> savedProducts, List<BuyRequest> buyRequests)
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Profile profile)? loaded,
+    TResult? Function(Profile profile, List<Product> products,
+            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Profile profile)? loaded,
+    TResult Function(Profile profile, List<Product> products,
+            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+        loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -318,7 +324,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Profile profile) loaded,
+    required TResult Function(Profile profile, List<Product> products,
+            List<Product> savedProducts, List<BuyRequest> buyRequests)
+        loaded,
   }) {
     return initial();
   }
@@ -327,7 +335,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Profile profile)? loaded,
+    TResult? Function(Profile profile, List<Product> products,
+            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+        loaded,
   }) {
     return initial?.call();
   }
@@ -336,7 +346,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Profile profile)? loaded,
+    TResult Function(Profile profile, List<Product> products,
+            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+        loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -387,7 +399,11 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Profile profile});
+  $Res call(
+      {Profile profile,
+      List<Product> products,
+      List<Product> savedProducts,
+      List<BuyRequest> buyRequests});
 
   $ProfileCopyWith<$Res> get profile;
 }
@@ -404,12 +420,27 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? profile = null,
+    Object? products = null,
+    Object? savedProducts = null,
+    Object? buyRequests = null,
   }) {
     return _then(_$LoadedImpl(
       profile: null == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
               as Profile,
+      products: null == products
+          ? _value._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+      savedProducts: null == savedProducts
+          ? _value._savedProducts
+          : savedProducts // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+      buyRequests: null == buyRequests
+          ? _value._buyRequests
+          : buyRequests // ignore: cast_nullable_to_non_nullable
+              as List<BuyRequest>,
     ));
   }
 
@@ -425,14 +456,44 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.profile});
+  const _$LoadedImpl(
+      {required this.profile,
+      required final List<Product> products,
+      required final List<Product> savedProducts,
+      required final List<BuyRequest> buyRequests})
+      : _products = products,
+        _savedProducts = savedProducts,
+        _buyRequests = buyRequests;
 
   @override
   final Profile profile;
+  final List<Product> _products;
+  @override
+  List<Product> get products {
+    if (_products is EqualUnmodifiableListView) return _products;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_products);
+  }
+
+  final List<Product> _savedProducts;
+  @override
+  List<Product> get savedProducts {
+    if (_savedProducts is EqualUnmodifiableListView) return _savedProducts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_savedProducts);
+  }
+
+  final List<BuyRequest> _buyRequests;
+  @override
+  List<BuyRequest> get buyRequests {
+    if (_buyRequests is EqualUnmodifiableListView) return _buyRequests;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_buyRequests);
+  }
 
   @override
   String toString() {
-    return 'ProfileState.loaded(profile: $profile)';
+    return 'ProfileState.loaded(profile: $profile, products: $products, savedProducts: $savedProducts, buyRequests: $buyRequests)';
   }
 
   @override
@@ -440,11 +501,21 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            (identical(other.profile, profile) || other.profile == profile));
+            (identical(other.profile, profile) || other.profile == profile) &&
+            const DeepCollectionEquality().equals(other._products, _products) &&
+            const DeepCollectionEquality()
+                .equals(other._savedProducts, _savedProducts) &&
+            const DeepCollectionEquality()
+                .equals(other._buyRequests, _buyRequests));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, profile);
+  int get hashCode => Object.hash(
+      runtimeType,
+      profile,
+      const DeepCollectionEquality().hash(_products),
+      const DeepCollectionEquality().hash(_savedProducts),
+      const DeepCollectionEquality().hash(_buyRequests));
 
   @JsonKey(ignore: true)
   @override
@@ -456,29 +527,35 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(Profile profile) loaded,
+    required TResult Function(Profile profile, List<Product> products,
+            List<Product> savedProducts, List<BuyRequest> buyRequests)
+        loaded,
   }) {
-    return loaded(profile);
+    return loaded(profile, products, savedProducts, buyRequests);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(Profile profile)? loaded,
+    TResult? Function(Profile profile, List<Product> products,
+            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+        loaded,
   }) {
-    return loaded?.call(profile);
+    return loaded?.call(profile, products, savedProducts, buyRequests);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(Profile profile)? loaded,
+    TResult Function(Profile profile, List<Product> products,
+            List<Product> savedProducts, List<BuyRequest> buyRequests)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(profile);
+      return loaded(profile, products, savedProducts, buyRequests);
     }
     return orElse();
   }
@@ -516,9 +593,16 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements ProfileState {
-  const factory _Loaded({required final Profile profile}) = _$LoadedImpl;
+  const factory _Loaded(
+      {required final Profile profile,
+      required final List<Product> products,
+      required final List<Product> savedProducts,
+      required final List<BuyRequest> buyRequests}) = _$LoadedImpl;
 
   Profile get profile;
+  List<Product> get products;
+  List<Product> get savedProducts;
+  List<BuyRequest> get buyRequests;
   @JsonKey(ignore: true)
   _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;

@@ -11,31 +11,9 @@ class _ProfileView extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => const SizedBox.shrink(),
-          loaded: (profile) => Scaffold(
-            appBar: AppBar(
-              leading: const CircleAvatar(
-                child: FlutterLogo(),
-              ),
-              title: Row(
-                children: [
-                  const Gap(8),
-                  Text(
-                    '${profile.point} puan',
-                  ),
-                  const Icon(
-                    Icons.star,
-                    color: Colors.orange,
-                  ),
-                ],
-              ),
-              actions: [
-                IconButton.filledTonal(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.edit_outlined,
-                  ),
-                )
-              ],
+          loaded: (profile, products, savedProducts, buyRequests) => Scaffold(
+            appBar: _ProfileAppBar(
+              profile: profile,
             ),
             body: DefaultTabController(
               length: 3,
@@ -77,6 +55,51 @@ class _ProfileView extends StatelessWidget {
       },
     );
   }
+}
+
+class _ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const _ProfileAppBar({
+    super.key,
+    required this.profile,
+  });
+  final Profile profile;
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      leading: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: CircleAvatar(
+          child: Image.network(
+            profile.avatarUrl ?? '',
+            errorBuilder: (context, error, stackTrace) => const Placeholder(),
+          ),
+        ),
+      ),
+      title: Row(
+        children: [
+          const Gap(8),
+          Text(
+            '${profile.point} puan',
+          ),
+          const Icon(
+            Icons.star,
+            color: Colors.orange,
+          ),
+        ],
+      ),
+      actions: [
+        IconButton.filledTonal(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.edit_outlined,
+          ),
+        )
+      ],
+    );
+  }
+
+  @override
+  Size get preferredSize => AppBar().preferredSize;
 }
 
 class GridListView extends StatelessWidget {

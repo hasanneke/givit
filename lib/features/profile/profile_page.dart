@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:givit/features/profile/bloc/profile_bloc.dart';
+import 'package:givit/features/profile/service/profile_service.dart';
 
 import 'package:givit/shared/model/buy_request/buy_request.dart';
 import 'package:givit/shared/model/product/product.dart';
@@ -18,7 +19,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProfileBloc(FBProfileService())
+      create: (context) => ProfileBloc(FBProfilePageService())
         ..add(
           ProfileEvent.started(
             userId: FirebaseAuth.instance.currentUser?.uid ?? '',

@@ -14,6 +14,7 @@ class Profile with _$Profile {
     required String surname,
     required String email,
     required String phone,
+    String? avatarUrl,
     @Default(0) double point,
     Address? address,
   }) = _Profile;

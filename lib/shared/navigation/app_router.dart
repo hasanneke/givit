@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:givit/features/home/view/home_page.dart';
 import 'package:givit/features/login/view/login_page.dart';
 import 'package:givit/features/product_detail/product_detail_page.dart';
 import 'package:givit/features/profile/profile_page.dart';
-import 'package:givit/features/profile/view/profile_view.dart';
 import 'package:givit/features/register/view/register_view.dart';
 import 'package:givit/features/request_product/request_product_page.dart';
 import 'package:givit/features/share/share_post.dart';

@@ -25,6 +25,7 @@ mixin _$Profile {
   String get surname => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
+  String? get avatarUrl => throw _privateConstructorUsedError;
   double get point => throw _privateConstructorUsedError;
   Address? get address => throw _privateConstructorUsedError;
 
@@ -44,6 +45,7 @@ abstract class $ProfileCopyWith<$Res> {
       String surname,
       String email,
       String phone,
+      String? avatarUrl,
       double point,
       Address? address});
 
@@ -68,6 +70,7 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
     Object? surname = null,
     Object? email = null,
     Object? phone = null,
+    Object? avatarUrl = freezed,
     Object? point = null,
     Object? address = freezed,
   }) {
@@ -92,6 +95,10 @@ class _$ProfileCopyWithImpl<$Res, $Val extends Profile>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      avatarUrl: freezed == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       point: null == point
           ? _value.point
           : point // ignore: cast_nullable_to_non_nullable
@@ -129,6 +136,7 @@ abstract class _$$ProfileImplCopyWith<$Res> implements $ProfileCopyWith<$Res> {
       String surname,
       String email,
       String phone,
+      String? avatarUrl,
       double point,
       Address? address});
 
@@ -152,6 +160,7 @@ class __$$ProfileImplCopyWithImpl<$Res>
     Object? surname = null,
     Object? email = null,
     Object? phone = null,
+    Object? avatarUrl = freezed,
     Object? point = null,
     Object? address = freezed,
   }) {
@@ -176,6 +185,10 @@ class __$$ProfileImplCopyWithImpl<$Res>
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
+      avatarUrl: freezed == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       point: null == point
           ? _value.point
           : point // ignore: cast_nullable_to_non_nullable
@@ -197,6 +210,7 @@ class _$ProfileImpl extends _Profile {
       required this.surname,
       required this.email,
       required this.phone,
+      this.avatarUrl,
       this.point = 0,
       this.address})
       : super._();
@@ -216,6 +230,8 @@ class _$ProfileImpl extends _Profile {
   @override
   final String phone;
   @override
+  final String? avatarUrl;
+  @override
   @JsonKey()
   final double point;
   @override
@@ -223,7 +239,7 @@ class _$ProfileImpl extends _Profile {
 
   @override
   String toString() {
-    return 'Profile(id: $id, name: $name, surname: $surname, email: $email, phone: $phone, point: $point, address: $address)';
+    return 'Profile(id: $id, name: $name, surname: $surname, email: $email, phone: $phone, avatarUrl: $avatarUrl, point: $point, address: $address)';
   }
 
   @override
@@ -236,14 +252,16 @@ class _$ProfileImpl extends _Profile {
             (identical(other.surname, surname) || other.surname == surname) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.avatarUrl, avatarUrl) ||
+                other.avatarUrl == avatarUrl) &&
             (identical(other.point, point) || other.point == point) &&
             (identical(other.address, address) || other.address == address));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, surname, email, phone, point, address);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, surname, email, phone, avatarUrl, point, address);
 
   @JsonKey(ignore: true)
   @override
@@ -266,6 +284,7 @@ abstract class _Profile extends Profile {
       required final String surname,
       required final String email,
       required final String phone,
+      final String? avatarUrl,
       final double point,
       final Address? address}) = _$ProfileImpl;
   _Profile._() : super._();
@@ -282,6 +301,8 @@ abstract class _Profile extends Profile {
   String get email;
   @override
   String get phone;
+  @override
+  String? get avatarUrl;
   @override
   double get point;
   @override
