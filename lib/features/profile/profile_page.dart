@@ -79,10 +79,9 @@ class BuyRequestsListView extends StatelessWidget {
       itemCount: buyRequests.length,
       itemBuilder: (context, index) => ListTile(
         leading: const CircleAvatar(),
-        title: Text(buyRequests[index].title),
-        subtitle: Text(
-          buyRequests[index].message,
-        ),
+        title: Text(buyRequests[index].title, overflow: TextOverflow.ellipsis),
+        subtitle:
+            Text(buyRequests[index].message, overflow: TextOverflow.ellipsis),
         trailing: BuyRequestStatus(
           status: buyRequests[index].status,
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:givit/features/login/view/login_view.dart';
+import 'package:givit/features/login/view/login_page.dart';
 import 'package:givit/features/register/view/register_view.dart';
 
 mixin RegisterViewMixin on State<RegisterPage> {

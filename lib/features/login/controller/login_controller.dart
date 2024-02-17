@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:givit/features/login/view/login_view.dart';
+import 'package:givit/features/login/view/login_page.dart';
 
 mixin LoginViewMixin on State<LoginPage> {
   late TextEditingController textEditingController;

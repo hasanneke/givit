@@ -19,33 +19,36 @@ class BuyRequest with _$BuyRequest {
 
   factory BuyRequest.fromJson(Map<String, dynamic> json) =>
       _$BuyRequestFromJson(json);
+
   static List<BuyRequest> get dummyList => [
         BuyRequest(
           profile: Profile.dummy,
           product: Product.dummy.first,
-          title: 'Talep Başlığı',
-          message: 'Talep Açıklaması',
+          title: 'Bu ayakabı oğlum için lazım',
+          message:
+              'Oğlum iki haftaya okula başlayacak ve ayakabıya ihtiyacı var',
         ),
-        BuyRequest(
-            profile: Profile.dummy,
-            product: Product.dummy.first,
-            title: 'Talep Başlığı',
-            message: 'Talep Açıklaması',
-            status: RequestStatus.accepted),
         BuyRequest(
           profile: Profile.dummy,
           product: Product.dummy.first,
-          title: 'Talep Başlığı',
-          message: 'Talep Açıklaması',
+          title: 'Telefonu kızım için alabilirim',
+          message:
+              'Telefon fiyatları oldukça pahallı. Bu telefon çok işimizi görecektir',
+          status: RequestStatus.accepted,
+        ),
+        BuyRequest(
+          profile: Profile.dummy,
+          product: Product.dummy.first,
+          title: 'Telefon modelimi yükseltmek istiyorum',
+          message: 'Telefonum biraz eskidi. Yeni telefona ihtiyacım var.',
           status: RequestStatus.rejected,
         )
       ];
   static BuyRequest get dummy => BuyRequest(
         profile: Profile.dummy,
         product: Product.dummy.first,
-        title: 'Talep Başlığı',
-        message: 'Talep Açıklaması',
-        status: RequestStatus.accepted,
+        title: 'Bu ayakabı oğlum için lazım',
+        message: 'Oğlum iki haftaya okula başlayacak ve ayakabıya ihtiyacı var',
       );
 }
 

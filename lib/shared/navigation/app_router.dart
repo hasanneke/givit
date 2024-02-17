@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:givit/features/home/view/home_page.dart';
-import 'package:givit/features/login/view/login_view.dart';
+import 'package:givit/features/login/view/login_page.dart';
 import 'package:givit/features/product_detail/product_detail_page.dart';
 import 'package:givit/features/profile/profile_page.dart';
 import 'package:givit/features/profile/view/profile_view.dart';
 import 'package:givit/features/register/view/register_view.dart';
 import 'package:givit/features/request_product/request_product_page.dart';
 import 'package:givit/features/share/share_post.dart';
+import 'package:givit/features/splash/splash_page.dart';
 import 'package:givit/shared/model/product/product.dart';
 import 'package:givit/shared/navigation/bottom_navigator/scaffold_with_navigation_bar.dart';
 
@@ -14,8 +15,12 @@ import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
   debugLogDiagnostics: true,
-  initialLocation: '/login',
+  initialLocation: '/splash',
   routes: [
+    GoRoute(
+      path: '/splash',
+      builder: (context, state) => const SplashPage(),
+    ),
     GoRoute(
       path: '/login',
       builder: (context, state) => const LoginPage(),
