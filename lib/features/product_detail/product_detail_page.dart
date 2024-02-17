@@ -1,95 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:givit/shared/model/comment/comment.dart';
 import 'package:givit/shared/model/product/product.dart';
+import 'package:givit/shared/model/profile/profile.dart';
+import 'package:go_router/go_router.dart';
+part 'widget/product_owner_info_view.dart';
+part 'widget/product_header_view.dart';
+part 'widget/product_comments.dart';
+part 'widget/product_app_bar.dart';
+part 'widget/product_request_button.dart';
+part 'widget/product_send_comment_dialog_view.dart';
 
 class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({super.key});
-
+  const ProductDetailPage({super.key, required this.product});
+  final Product product;
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final product = Product.dummy.first;
-    return SafeArea(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      image: Image.network(product.imageUrl).image,
+
+    return Scaffold(
+      appBar: _AppBar(product: product),
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    _ProductHeaderView(product: product),
+                    _ProductOwnerInfoView(
+                      product: product,
+                      textTheme: textTheme,
                     ),
-                  ),
-                  height: 200,
+                    _CommentsView(
+                      onSendCommentPressed: () async {
+                        final res = makeCommentDialog(context);
+                      },
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.person_outline),
-                          const Gap(4),
-                          Text(
-                            product.profile.fullName,
-                          ),
-                          const Gap(4),
-                          Text(
-                            '${product.profile.point} Puan',
-                          ),
-                        ],
-                      ),
-                      const Divider(),
-                      Text(
-                        product.title,
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const Gap(8),
-                      Text(
-                        product.description,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      const Gap(8),
-                      Row(
-                        children: [
-                          const Icon(Icons.location_on_outlined),
-                          const Gap(4),
-                          Text(
-                            product.profile.address?.description ?? '',
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                        ],
-                      ),
-                      const Divider(),
-                      Text(
-                        'Sohbet',
-                        style: textTheme.titleMedium,
-                      ),
-                      const Divider()
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    padding: const EdgeInsets.all(8),
-                    itemCount: 5,
-                    itemBuilder: (context, index) => const Text('Mesaj'),
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Talep Et'),
-          )
-        ],
+            _RequestItemButton(product: product)
+          ],
+        ),
       ),
     );
+  }
+
+  Future<Comment?> makeCommentDialog(BuildContext context) async {
+    final res = await showDialog<Comment?>(
+      context: context,
+      builder: (context) => const _SendCommentDialogView(),
+    );
+    return res;
   }
 }

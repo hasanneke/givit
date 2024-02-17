@@ -10,6 +10,7 @@ part 'product.g.dart';
 class Product with _$Product {
   const Product._();
   factory Product({
+    @Default('') String id,
     required String title,
     required String description,
     required String imageUrl,

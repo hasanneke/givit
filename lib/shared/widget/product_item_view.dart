@@ -12,7 +12,7 @@ class ProductItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => GoRouter.of(context).push('/product-detail'),
+      onTap: () => GoRouter.of(context).push('/product-detail', extra: product),
       child: Container(
         padding: const EdgeInsets.all(4),
         decoration: BoxDecoration(

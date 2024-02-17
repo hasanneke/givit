@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
-
 import 'package:givit/shared/model/product_category/product_category.dart';
 
 class HomeService {

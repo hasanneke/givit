@@ -20,6 +20,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Product {
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
@@ -37,7 +38,8 @@ abstract class $ProductCopyWith<$Res> {
       _$ProductCopyWithImpl<$Res, Product>;
   @useResult
   $Res call(
-      {String title,
+      {String id,
+      String title,
       String description,
       String imageUrl,
       Profile profile,
@@ -59,6 +61,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? imageUrl = null,
@@ -66,6 +69,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? categories = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -106,7 +113,8 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String title,
+      {String id,
+      String title,
       String description,
       String imageUrl,
       Profile profile,
@@ -127,6 +135,7 @@ class __$$ProductImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? title = null,
     Object? description = null,
     Object? imageUrl = null,
@@ -134,6 +143,10 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? categories = null,
   }) {
     return _then(_$ProductImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -162,7 +175,8 @@ class __$$ProductImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductImpl extends _Product {
   _$ProductImpl(
-      {required this.title,
+      {this.id = '',
+      required this.title,
       required this.description,
       required this.imageUrl,
       required this.profile,
@@ -173,6 +187,9 @@ class _$ProductImpl extends _Product {
   factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final String id;
   @override
   final String title;
   @override
@@ -191,7 +208,7 @@ class _$ProductImpl extends _Product {
 
   @override
   String toString() {
-    return 'Product(title: $title, description: $description, imageUrl: $imageUrl, profile: $profile, categories: $categories)';
+    return 'Product(id: $id, title: $title, description: $description, imageUrl: $imageUrl, profile: $profile, categories: $categories)';
   }
 
   @override
@@ -199,6 +216,7 @@ class _$ProductImpl extends _Product {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -211,7 +229,7 @@ class _$ProductImpl extends _Product {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, description, imageUrl,
+  int get hashCode => Object.hash(runtimeType, id, title, description, imageUrl,
       profile, const DeepCollectionEquality().hash(_categories));
 
   @JsonKey(ignore: true)
@@ -230,7 +248,8 @@ class _$ProductImpl extends _Product {
 
 abstract class _Product extends Product {
   factory _Product(
-      {required final String title,
+      {final String id,
+      required final String title,
       required final String description,
       required final String imageUrl,
       required final Profile profile,
@@ -239,6 +258,8 @@ abstract class _Product extends Product {
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
 
+  @override
+  String get id;
   @override
   String get title;
   @override
