@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:givit/features/home/service/home_service.dart';
+import 'package:givit/shared/model/mock/mock_data.dart';
 import 'package:givit/shared/model/product/product.dart';
 import 'package:givit/shared/model/product_category/product_category.dart';
 
@@ -21,27 +22,29 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
   }
   Future<void> _onStarted(Emitter emit) async {
-    await Future.wait([
-      homeService.fetchCategories().then((value) {
-        _categories.addAll(value);
-      }).whenComplete(
-        () => emit(
-          HomeState.loaded(
-            products: _products,
-            categories: _categories,
-          ),
-        ),
-      ),
-      homeService.fetchProducts().then((value) {
-        _products.addAll(value);
-      }).whenComplete(
-        () => emit(
-          HomeState.loaded(
-            products: _products,
-            categories: _categories,
-          ),
-        ),
-      )
-    ]);
+    // await Future.wait([
+    //   homeService.fetchCategories().then((value) {
+    //     _categories.addAll(value);
+    //   }).whenComplete(
+    //     () => emit(
+    //       HomeState.loaded(
+    //         products: _products,
+    //         categories: _categories,
+    //       ),
+    //     ),
+    //   ),
+    //   homeService.fetchProducts().then((value) {
+    //     _products.addAll(value);
+    //   }).whenComplete(
+    //     () => emit(
+    //       HomeState.loaded(
+    //         products: _products,
+    //         categories: _categories,
+    //       ),
+    //     ),
+    //   )
+    // ]);
+    emit(HomeState.loaded(
+        products: MockData.products, categories: MockData.categories));
   }
 }

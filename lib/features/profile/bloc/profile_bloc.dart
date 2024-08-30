@@ -5,6 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:givit/features/profile/service/profile_service.dart';
 import 'package:givit/shared/model/buy_request/buy_request.dart';
 import 'package:givit/shared/model/mark/product_mark.dart';
+import 'package:givit/shared/model/mock/mock_data.dart';
 import 'package:givit/shared/model/product/product.dart';
 
 import 'package:givit/shared/model/profile/profile.dart';
@@ -23,16 +24,16 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) : super(const _Initial()) {
     on<ProfileEvent>((event, emit) async {
       await event.when(started: (userId) async {
-        final profile = await profileService.getUser(userId);
-        final savedProducts = await profileService.fetchMarkedProducts(userId);
-        final products = await profileService.fetchUsersProducts(userId);
-        final buyRequests = await profileService.fetchUsersRequests(userId);
+        // final profile = await profileService.getUser(userId);
+        // final savedProducts = await profileService.fetchMarkedProducts(userId);
+        // final products = await profileService.fetchUsersProducts(userId);
+        // final buyRequests = await profileService.fetchUsersRequests(userId);
         emit(
           ProfileState.loaded(
-            profile: profile,
-            products: products,
-            savedProducts: savedProducts,
-            buyRequests: buyRequests,
+            profile: MockData.profile,
+            products: MockData.products,
+            savedProducts: MockData.productMarks,
+            buyRequests: MockData.buyRequests,
           ),
         );
       });

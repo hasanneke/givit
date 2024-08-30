@@ -18,7 +18,10 @@ class _CommentsView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           itemCount: Comment.comments.length,
           itemBuilder: (context, index) => ListTile(
-            leading: const FlutterLogo(),
+            leading: CircleAvatar(
+                backgroundImage: Image.network(
+                        'https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png')
+                    .image),
             contentPadding: EdgeInsets.zero,
             dense: true,
             title: Text(Comment.comments[index].text),

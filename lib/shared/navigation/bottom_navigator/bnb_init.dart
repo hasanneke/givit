@@ -6,12 +6,17 @@ class InitBottomNavigationBar {
     const BottomNavigationBarItem(
       activeIcon: Icon(Icons.home),
       icon: Icon(Icons.home_outlined),
-      label: 'Home',
+      label: 'Ana Sayfa',
     ),
     const BottomNavigationBarItem(
       activeIcon: Icon(Icons.add),
       icon: Icon(Icons.add),
-      label: 'Share',
+      label: 'Paylaş',
+    ),
+    const BottomNavigationBarItem(
+      activeIcon: Icon(Icons.star),
+      icon: Icon(Icons.star_outline),
+      label: 'Lider Sayfası',
     ),
     const BottomNavigationBarItem(
       activeIcon: Icon(Icons.person),
@@ -27,8 +32,11 @@ class InitBottomNavigationBar {
     if (location.startsWith('/share')) {
       return 1;
     }
-    if (location.startsWith('/profile')) {
+    if (location.startsWith('/leader-board')) {
       return 2;
+    }
+    if (location.startsWith('/profile')) {
+      return 3;
     }
     return 0;
   }
@@ -42,6 +50,9 @@ class InitBottomNavigationBar {
         GoRouter.of(context).go('/share');
         break;
       case 2:
+        GoRouter.of(context).go('/leader-board');
+        break;
+      case 3:
         GoRouter.of(context).go('/profile');
         break;
     }

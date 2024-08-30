@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> with LoginViewMixin {
                     },
                     text: 'Login',
                   ),
-                  const SignInWithOtherMethods(),
+                  //    const SignInWithOtherMethods(),
                 ],
               ),
             ),

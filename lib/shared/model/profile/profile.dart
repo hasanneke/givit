@@ -27,6 +27,8 @@ class Profile with _$Profile {
         surname: 'Eke',
         email: 'hasaneke1000@gmail.com',
         phone: '0551 123 54 71',
+        avatarUrl:
+            'https://yt3.ggpht.com/ytc/AIdro_mcdICBAV29FtRetjCbVICax6ujq-FGqL_DgBJovRs4tpU=s600-c-k-c0x00ffffff-no-rj-rp-mo',
         address: Address(
           address: 'Tufan sokak no:37',
           city: 'Ankara',

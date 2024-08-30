@@ -20,39 +20,4 @@ class Product with _$Product {
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
-  static List<Product> get dummy => [
-        Product(
-          title: 'deji batarya',
-          description: 'deji batarya açaıklaması',
-          imageUrl:
-              'https://eral.k12.tr/wp-content/uploads/2022/06/kiyafet-1.jpeg',
-          profile: Profile.dummy,
-          categories: [],
-        ),
-        Product(
-          title: 'TOMMY HILFIGER ERKEK',
-          description: 'TOMMY HILFIGER ERKEK',
-          imageUrl:
-              'https://productimages.hepsiburada.net/s/0/375-375/9472267878450.jpg',
-          profile: Profile.dummy,
-          categories: [],
-        ),
-        Product(
-          title: 'deji batarya',
-          description: 'deji batarya açaıklaması',
-          imageUrl:
-              'https://productimages.hepsiburada.net/s/0/375-375/9472267878450.jpg',
-          profile: Profile.dummy,
-          categories: [
-            ProductCategory(
-              id: '0',
-              name: 'ayakabı',
-            ),
-            ProductCategory(
-              id: '0',
-              name: 'tshirt',
-            ),
-          ],
-        ),
-      ];
 }

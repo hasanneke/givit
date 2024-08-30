@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:givit/shared/model/comment/comment.dart';
+import 'package:givit/shared/model/mock/mock_data.dart';
 import 'package:givit/shared/model/product/product.dart';
 import 'package:givit/shared/model/profile/profile.dart';
 import 'package:go_router/go_router.dart';

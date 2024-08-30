@@ -133,7 +133,9 @@ class BuyRequestsListView extends StatelessWidget {
       separatorBuilder: (context, index) => const Divider(),
       itemCount: buyRequests.length,
       itemBuilder: (context, index) => ListTile(
-        leading: const CircleAvatar(),
+        leading: CircleAvatar(
+            backgroundImage:
+                Image.network(buyRequests[index].product.imageUrl).image),
         title: Text(buyRequests[index].title, overflow: TextOverflow.ellipsis),
         subtitle:
             Text(buyRequests[index].message, overflow: TextOverflow.ellipsis),

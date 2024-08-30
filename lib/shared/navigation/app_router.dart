@@ -1,4 +1,5 @@
 import 'package:givit/features/home/view/home_page.dart';
+import 'package:givit/features/leaderboard/leaderboard_page.dart';
 import 'package:givit/features/login/view/login_page.dart';
 import 'package:givit/features/product_detail/product_detail_page.dart';
 import 'package:givit/features/profile/profile_page.dart';
@@ -43,6 +44,14 @@ final appRouter = GoRouter(
         GoRoute(
           path: '/profile',
           builder: (context, state) => const ProfilePage(),
+        ),
+        GoRoute(
+          path: '/leader-board',
+          builder: (context, state) => LeaderboardPage(),
+        ),
+        GoRoute(
+          path: '/donate',
+          builder: (context, state) => DonationPage(),
         ),
         GoRoute(
           path: '/product-detail',
