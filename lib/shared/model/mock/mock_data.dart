@@ -141,8 +141,3 @@ class MockData {
     ),
   ];
 }
-
-void main() {
-  // Bu alanda herhangi bir şey yapmanıza gerek yok,
-  // çünkü veriler MockData sınıfı altında toplanmış durumda.
-}
