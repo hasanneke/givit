@@ -26,7 +26,6 @@ class LeaderboardPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Lider Sayfası'),
-        backgroundColor: Colors.green[700],
       ),
       body: Container(
         color: Colors.green[50],
@@ -43,7 +42,7 @@ class LeaderboardPage extends StatelessWidget {
                   children: [
                     Container(
                       decoration: BoxDecoration(
-                        color: Colors.green[300],
+                        color: Colors.green,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10.0),
                           topRight: Radius.circular(10.0),
@@ -85,10 +84,10 @@ class LeaderboardPage extends StatelessWidget {
                           return Container(
                             decoration: BoxDecoration(
                               color: index == 0
-                                  ? Colors.amber[100]
+                                  ? Colors.amber
                                   : (index % 2 == 0
                                       ? Colors.green[100]
-                                      : Colors.white),
+                                      : Colors.grey.shade300),
                             ),
                             padding: EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16.0),

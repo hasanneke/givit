@@ -28,11 +28,34 @@ class ProductDetailPage extends StatelessWidget {
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _ProductHeaderView(product: product),
                     _ProductOwnerInfoView(
                       product: product,
                       textTheme: textTheme,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            const TextSpan(
+                              text: '! ',
+                              style: TextStyle(color: Colors.red, fontSize: 16),
+                            ),
+                            TextSpan(
+                              text: 'Alıcı Ödemeli',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelSmall
+                                  ?.copyWith(
+                                    decoration: TextDecoration.underline,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                     _CommentsView(
                       onSendCommentPressed: () async {

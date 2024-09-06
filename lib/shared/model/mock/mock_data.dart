@@ -140,4 +140,6 @@ class MockData {
       message: 'Bu romanı satın almak istiyorum, nasıl alabilirim?',
     ),
   ];
+  static String dummyImageUrl =
+      'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdemo.weblizar.com%2Fexplora-premium%2Fwp-content%2Fuploads%2Fsites%2F81%2F2016%2F09%2Fdummy-product_2.png&f=1&nofb=1&ipt=710d8d8a475c6324190c940956c49e698ad14246a3f1e81df62ddac4ffee26df&ipo=images';
 }

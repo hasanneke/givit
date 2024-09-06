@@ -4,8 +4,11 @@ import 'package:givit/features/home/bloc/home_bloc.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:givit/features/home/service/home_service.dart';
+import 'package:givit/shared/model/mock/mock_data.dart';
 import 'package:givit/shared/model/product/product.dart';
 import 'package:givit/shared/model/product_category/product_category.dart';
+import 'package:givit/shared/products/bloc/product_bloc.dart';
+import 'package:givit/shared/products/bloc/product_state.dart';
 import 'package:givit/shared/widget/product_item_view.dart';
 part './widget/home_app_bar.dart';
 part './widget/home_categories_view.dart';
@@ -22,13 +25,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeBloc(
-        homeService: FBHomeService(),
-      )..add(
-          const HomeEvent.started(),
-        ),
-      child: const _HomeView(),
-    );
+    return const _HomeView();
   }
 }

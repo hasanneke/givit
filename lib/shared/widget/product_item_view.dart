@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:givit/shared/model/mock/mock_data.dart';
 import 'package:givit/shared/model/product/product.dart';
 import 'package:go_router/go_router.dart';
 
@@ -26,14 +27,14 @@ class ProductItemView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: product.imageUrl.isEmpty
+              child: product.imageUrl?.isEmpty ?? false
                   ? const Placeholder()
                   : Container(
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           fit: BoxFit.fill,
                           image: Image.network(
-                            product.imageUrl,
+                            product.imageUrl ?? MockData.dummyImageUrl,
                             errorBuilder: (context, error, stackTrace) =>
                                 const Placeholder(),
                           ).image,

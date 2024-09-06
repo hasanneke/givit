@@ -22,29 +22,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     });
   }
   Future<void> _onStarted(Emitter emit) async {
-    // await Future.wait([
-    //   homeService.fetchCategories().then((value) {
-    //     _categories.addAll(value);
-    //   }).whenComplete(
-    //     () => emit(
-    //       HomeState.loaded(
-    //         products: _products,
-    //         categories: _categories,
-    //       ),
-    //     ),
-    //   ),
-    //   homeService.fetchProducts().then((value) {
-    //     _products.addAll(value);
-    //   }).whenComplete(
-    //     () => emit(
-    //       HomeState.loaded(
-    //         products: _products,
-    //         categories: _categories,
-    //       ),
-    //     ),
-    //   )
-    // ]);
-    emit(HomeState.loaded(
-        products: MockData.products, categories: MockData.categories));
+    emit(
+      HomeState.loaded(
+        products: MockData.products,
+        categories: MockData.categories,
+      ),
+    );
   }
 }

@@ -11,11 +11,12 @@ _$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String? ?? '',
       title: json['title'] as String,
       description: json['description'] as String,
-      imageUrl: json['image_url'] as String,
+      imageUrl: json['image_url'] as String?,
       profile: Profile.fromJson(json['profile'] as Map<String, dynamic>),
       categories: (json['categories'] as List<dynamic>)
           .map((e) => ProductCategory.fromJson(e as Map<String, dynamic>))
           .toList(),
+      isReceiverPayment: json['is_receiver_payment'] as bool?,
     );
 
 Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
       'image_url': instance.imageUrl,
       'profile': instance.profile,
       'categories': instance.categories,
+      'is_receiver_payment': instance.isReceiverPayment,
     };

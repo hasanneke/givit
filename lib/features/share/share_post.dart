@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:gap/gap.dart';
+import 'package:givit/shared/model/mock/mock_data.dart';
+import 'package:givit/shared/model/product/product.dart';
+import 'package:givit/shared/products/bloc/product_bloc.dart';
 
 class SharePostPage extends StatefulWidget {
   const SharePostPage({super.key});
@@ -49,20 +53,42 @@ class _SharePostPageState extends State<SharePostPage> {
               FormBuilderDropdown(
                 name: 'category',
                 decoration: const InputDecoration(labelText: 'Kategori'),
-                items: const [],
+                items: MockData.categories
+                    .map((e) => DropdownMenuItem(value: e, child: Text(e.name)))
+                    .toList(),
               ),
-              TextButton.icon(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.browse_gallery_outlined,
+              const Gap(12),
+              FormBuilderDateRangePicker(
+                name: 'date_range',
+                firstDate: DateTime.now(),
+                lastDate: DateTime.now().add(const Duration(days: 2000)),
+                decoration: const InputDecoration(
+                    labelText: 'Uygun Kargo Tarih Aralığınız',
+                    prefixIcon: Icon(Icons.date_range_outlined)),
+              ),
+              FormBuilderCheckbox(
+                name: 'is_receiver_payment',
+                title: const Text(
+                  'Alıcı Ödemeli',
                 ),
-                label: const Text('Fotoğraf Ekle'),
               ),
               const Gap(12),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_formKey.currentState?.saveAndValidate() ?? false) {
+                      final product = Product(
+                          title: _formKey.currentState?.value['title'],
+                          description:
+                              _formKey.currentState?.value['description'],
+                          profile: MockData.profile,
+                          categories: MockData.categories);
+                      context
+                          .read<ProductBloc>()
+                          .add(ProductEvent.create(product: product));
+                    }
+                  },
                   child: const Text(
                     'Paylaş',
                   ),

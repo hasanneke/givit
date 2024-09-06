@@ -23,9 +23,10 @@ mixin _$Product {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
   Profile get profile => throw _privateConstructorUsedError;
   List<ProductCategory> get categories => throw _privateConstructorUsedError;
+  bool? get isReceiverPayment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,9 +42,10 @@ abstract class $ProductCopyWith<$Res> {
       {String id,
       String title,
       String description,
-      String imageUrl,
+      String? imageUrl,
       Profile profile,
-      List<ProductCategory> categories});
+      List<ProductCategory> categories,
+      bool? isReceiverPayment});
 
   $ProfileCopyWith<$Res> get profile;
 }
@@ -64,9 +66,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? id = null,
     Object? title = null,
     Object? description = null,
-    Object? imageUrl = null,
+    Object? imageUrl = freezed,
     Object? profile = null,
     Object? categories = null,
+    Object? isReceiverPayment = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -81,10 +84,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: null == imageUrl
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profile: null == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
@@ -93,6 +96,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<ProductCategory>,
+      isReceiverPayment: freezed == isReceiverPayment
+          ? _value.isReceiverPayment
+          : isReceiverPayment // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -116,9 +123,10 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       {String id,
       String title,
       String description,
-      String imageUrl,
+      String? imageUrl,
       Profile profile,
-      List<ProductCategory> categories});
+      List<ProductCategory> categories,
+      bool? isReceiverPayment});
 
   @override
   $ProfileCopyWith<$Res> get profile;
@@ -138,9 +146,10 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? description = null,
-    Object? imageUrl = null,
+    Object? imageUrl = freezed,
     Object? profile = null,
     Object? categories = null,
+    Object? isReceiverPayment = freezed,
   }) {
     return _then(_$ProductImpl(
       id: null == id
@@ -155,10 +164,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: null == imageUrl
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profile: null == profile
           ? _value.profile
           : profile // ignore: cast_nullable_to_non_nullable
@@ -167,6 +176,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value._categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<ProductCategory>,
+      isReceiverPayment: freezed == isReceiverPayment
+          ? _value.isReceiverPayment
+          : isReceiverPayment // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -178,9 +191,10 @@ class _$ProductImpl extends _Product {
       {this.id = '',
       required this.title,
       required this.description,
-      required this.imageUrl,
+      this.imageUrl,
       required this.profile,
-      required final List<ProductCategory> categories})
+      required final List<ProductCategory> categories,
+      this.isReceiverPayment})
       : _categories = categories,
         super._();
 
@@ -195,7 +209,7 @@ class _$ProductImpl extends _Product {
   @override
   final String description;
   @override
-  final String imageUrl;
+  final String? imageUrl;
   @override
   final Profile profile;
   final List<ProductCategory> _categories;
@@ -207,8 +221,11 @@ class _$ProductImpl extends _Product {
   }
 
   @override
+  final bool? isReceiverPayment;
+
+  @override
   String toString() {
-    return 'Product(id: $id, title: $title, description: $description, imageUrl: $imageUrl, profile: $profile, categories: $categories)';
+    return 'Product(id: $id, title: $title, description: $description, imageUrl: $imageUrl, profile: $profile, categories: $categories, isReceiverPayment: $isReceiverPayment)';
   }
 
   @override
@@ -224,13 +241,22 @@ class _$ProductImpl extends _Product {
                 other.imageUrl == imageUrl) &&
             (identical(other.profile, profile) || other.profile == profile) &&
             const DeepCollectionEquality()
-                .equals(other._categories, _categories));
+                .equals(other._categories, _categories) &&
+            (identical(other.isReceiverPayment, isReceiverPayment) ||
+                other.isReceiverPayment == isReceiverPayment));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, description, imageUrl,
-      profile, const DeepCollectionEquality().hash(_categories));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      title,
+      description,
+      imageUrl,
+      profile,
+      const DeepCollectionEquality().hash(_categories),
+      isReceiverPayment);
 
   @JsonKey(ignore: true)
   @override
@@ -251,9 +277,10 @@ abstract class _Product extends Product {
       {final String id,
       required final String title,
       required final String description,
-      required final String imageUrl,
+      final String? imageUrl,
       required final Profile profile,
-      required final List<ProductCategory> categories}) = _$ProductImpl;
+      required final List<ProductCategory> categories,
+      final bool? isReceiverPayment}) = _$ProductImpl;
   _Product._() : super._();
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
@@ -265,11 +292,13 @@ abstract class _Product extends Product {
   @override
   String get description;
   @override
-  String get imageUrl;
+  String? get imageUrl;
   @override
   Profile get profile;
   @override
   List<ProductCategory> get categories;
+  @override
+  bool? get isReceiverPayment;
   @override
   @JsonKey(ignore: true)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>

@@ -14,7 +14,8 @@ class _ProductHeaderView extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.contain,
-          image: Image.network(product.imageUrl).image,
+          image:
+              Image.network(product.imageUrl ?? MockData.dummyImageUrl).image,
         ),
       ),
       height: 200,

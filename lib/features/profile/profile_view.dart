@@ -12,40 +12,56 @@ class _ProfileView extends StatelessWidget {
         return state.when(
           initial: () => const SizedBox.shrink(),
           loaded: (profile, products, savedProducts, buyRequests) => Scaffold(
-            appBar: _ProfileAppBar(
-              profile: profile,
-            ),
-            body: DefaultTabController(
-              length: 3,
+            body: SafeArea(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProfileInfo(profile: profile),
-                  const TabBar(
-                    tabs: [
-                      Tab(
-                        text: 'İlanlarım',
-                      ),
-                      Tab(
-                        text: 'İsteklerim',
-                      ),
-                      Tab(
-                        text: 'Kaydedilenler',
-                      ),
-                    ],
+                  _ProfileAppBar(
+                    profile: profile,
                   ),
                   Expanded(
-                    child: TabBarView(children: [
-                      GridListView(
-                        products: products,
+                    child: DefaultTabController(
+                      length: 4,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ProfileInfo(profile: profile),
+                          const TabBar(
+                            tabs: [
+                              Tab(
+                                text: 'İlanlarım',
+                              ),
+                              Tab(
+                                text: 'Taleplerim',
+                              ),
+                              Tab(
+                                text: 'Kaydedilenler',
+                              ),
+                              Tab(
+                                text: 'Gelen Talepler',
+                              ),
+                            ],
+                          ),
+                          Expanded(
+                            child: TabBarView(children: [
+                              GridListView(
+                                products: products,
+                              ),
+                              BuyRequestsListView(
+                                buyRequests: buyRequests,
+                              ),
+                              GridListView(
+                                products: savedProducts
+                                    .map((e) => e.product)
+                                    .toList(),
+                              ),
+                              BuyRequestsListView(
+                                buyRequests: buyRequests.take(3).toList(),
+                              ),
+                            ]),
+                          ),
+                        ],
                       ),
-                      BuyRequestsListView(
-                        buyRequests: buyRequests,
-                      ),
-                      GridListView(
-                        products: savedProducts.map((e) => e.product).toList(),
-                      ),
-                    ]),
+                    ),
                   ),
                 ],
               ),
@@ -65,36 +81,43 @@ class _ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Profile? profile;
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      leading: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: CircleAvatar(
-          child: Image.network(
-            profile?.avatarUrl ?? '',
-            errorBuilder: (context, error, stackTrace) => const Placeholder(),
-          ),
-        ),
-      ),
-      title: Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Gap(8),
-          Text(
-            '${profile?.point ?? 0} puan',
+          Row(
+            children: [
+              CircleAvatar(
+                child: Image.network(
+                  profile?.avatarUrl ?? '',
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Placeholder(),
+                ),
+              ),
+              const Gap(8),
+              Text(
+                '${profile?.point ?? 0} puan',
+              ),
+              const Icon(
+                Icons.star,
+                color: Colors.orange,
+              ),
+            ],
           ),
-          const Icon(
-            Icons.star,
-            color: Colors.orange,
+          SizedBox(
+            width: 130,
+            child: FormBuilderSwitch(
+              decoration: InputDecoration(
+                  border: InputBorder.none, enabledBorder: InputBorder.none),
+              name: 'is_anon',
+              title: const Text(
+                'Hesabı Gizle',
+              ),
+            ),
           ),
         ],
       ),
-      actions: [
-        IconButton.filledTonal(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.edit_outlined,
-          ),
-        )
-      ],
     );
   }
 
@@ -135,7 +158,7 @@ class BuyRequestsListView extends StatelessWidget {
       itemBuilder: (context, index) => ListTile(
         leading: CircleAvatar(
             backgroundImage:
-                Image.network(buyRequests[index].product.imageUrl).image),
+                Image.network(buyRequests[index].product.imageUrl ?? '').image),
         title: Text(buyRequests[index].title, overflow: TextOverflow.ellipsis),
         subtitle:
             Text(buyRequests[index].message, overflow: TextOverflow.ellipsis),

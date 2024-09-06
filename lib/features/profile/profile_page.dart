@@ -1,13 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:gap/gap.dart';
 import 'package:givit/features/profile/bloc/profile_bloc.dart';
 import 'package:givit/features/profile/service/profile_service.dart';
-
 import 'package:givit/shared/model/buy_request/buy_request.dart';
-import 'package:givit/shared/model/mark/product_mark.dart';
-import 'package:givit/shared/model/mock/mock_data.dart';
 import 'package:givit/shared/model/product/product.dart';
 import 'package:givit/shared/model/profile/profile.dart';
 import 'package:givit/shared/widget/product_item_view.dart';

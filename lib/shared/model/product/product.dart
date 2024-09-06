@@ -13,9 +13,10 @@ class Product with _$Product {
     @Default('') String id,
     required String title,
     required String description,
-    required String imageUrl,
+    String? imageUrl,
     required Profile profile,
     required List<ProductCategory> categories,
+    bool? isReceiverPayment,
   }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) =>

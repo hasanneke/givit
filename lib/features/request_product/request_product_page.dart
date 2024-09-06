@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:givit/shared/model/mock/mock_data.dart';
 import 'package:givit/shared/model/product/product.dart';
 
 class RequestProductPage extends StatelessWidget {
@@ -16,7 +17,7 @@ class RequestProductPage extends StatelessWidget {
         child: Column(
           children: [
             Image.network(
-              product.imageUrl,
+              product.imageUrl ?? MockData.dummyImageUrl,
               height: 200,
             ),
             const Gap(12),
